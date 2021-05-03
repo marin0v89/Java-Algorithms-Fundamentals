@@ -14,9 +14,9 @@ public class TopologicalSortTests {
         Map<String, List<String>> graph = new LinkedHashMap<>();
         graph.put("A", new ArrayList<>(Arrays.asList("B", "C")));
         graph.put("B", new ArrayList<>(Arrays.asList("D", "E")));
-        graph.put("C", new ArrayList<>(Arrays.asList("F")));
+        graph.put("C", new ArrayList<>(Collections.singletonList("F")));
         graph.put("D", new ArrayList<>(Arrays.asList("C", "F")));
-        graph.put("E", new ArrayList<>(Arrays.asList("D")));
+        graph.put("E", new ArrayList<>(Collections.singletonList("D")));
         graph.put("F", new ArrayList<>());
 
         // Act
@@ -32,9 +32,9 @@ public class TopologicalSortTests {
         Map<String, List<String>> graph = new LinkedHashMap<>();
         graph.put("IDEs", new ArrayList<>(Arrays.asList("variables", "loops")));
         graph.put("variables", new ArrayList<>(Arrays.asList("conditionals", "loops", "bits")));
-        graph.put("loops", new ArrayList<>(Arrays.asList("bits")));
-        graph.put("bits", new ArrayList<>(Arrays.asList()));
-        graph.put("conditionals", new ArrayList<>(Arrays.asList("loops")));
+        graph.put("loops", new ArrayList<>(Collections.singletonList("bits")));
+        graph.put("bits", new ArrayList<>(Collections.emptyList()));
+        graph.put("conditionals", new ArrayList<>(Collections.singletonList("loops")));
 
         // Act
         Collection<String> topSorter = Main.topSort(graph);
@@ -76,10 +76,10 @@ public class TopologicalSortTests {
         graph.put("D", new ArrayList<>(Arrays.asList("A", "B")));
         graph.put("F", new ArrayList<>(Arrays.asList("B", "C", "E")));
         graph.put("E", new ArrayList<>(Arrays.asList("C", "A")));
-        graph.put("C", new ArrayList<>(Arrays.asList("A")));
-        graph.put("B", new ArrayList<>(Arrays.asList("A")));
+        graph.put("C", new ArrayList<>(Collections.singletonList("A")));
+        graph.put("B", new ArrayList<>(Collections.singletonList("A")));
         graph.put("A", new ArrayList<>());
-        graph.put("H", new ArrayList<>(Arrays.asList("G")));
+        graph.put("H", new ArrayList<>(Collections.singletonList("G")));
         graph.put("G", new ArrayList<>());
 
         // Act
@@ -95,7 +95,7 @@ public class TopologicalSortTests {
     public void TestTopSortAcyclicGraph2Vertices() {
         // Arrange
         Map<String, List<String>> graph = new LinkedHashMap<>();
-        graph.put("First", new ArrayList<>(Arrays.asList("Second")));
+        graph.put("First", new ArrayList<>(Collections.singletonList("Second")));
         graph.put("Second", new ArrayList<>());
 
         // Act
@@ -109,8 +109,8 @@ public class TopologicalSortTests {
     public void TestTopSortGraph2VerticesWithCycle() {
         // Arrange
         Map<String, List<String>> graph = new LinkedHashMap<>();
-        graph.put("First", new ArrayList<>(Arrays.asList("Second")));
-        graph.put("Second", new ArrayList<>(Arrays.asList("First")));
+        graph.put("First", new ArrayList<>(Collections.singletonList("Second")));
+        graph.put("Second", new ArrayList<>(Collections.singletonList("First")));
 
         // Act
         // Assert
@@ -121,13 +121,13 @@ public class TopologicalSortTests {
     public void TestTopSortGraph7VerticesWithCycle() {
         // Arrange
         Map<String, List<String>> graph = new LinkedHashMap<>();
-        graph.put("A", new ArrayList<>(Arrays.asList("B")));
-        graph.put("B", new ArrayList<>(Arrays.asList("C")));
+        graph.put("A", new ArrayList<>(Collections.singletonList("B")));
+        graph.put("B", new ArrayList<>(Collections.singletonList("C")));
         graph.put("C", new ArrayList<>(Arrays.asList("D", "E")));
-        graph.put("D", new ArrayList<>(Arrays.asList("E")));
+        graph.put("D", new ArrayList<>(Collections.singletonList("E")));
         graph.put("E", new ArrayList<>(Arrays.asList("F", "C")));
         graph.put("F", new ArrayList<>());
-        graph.put("Z", new ArrayList<>(Arrays.asList("A")));
+        graph.put("Z", new ArrayList<>(Collections.singletonList("A")));
 
         // Act
         // Assert
