@@ -1,5 +1,6 @@
 package l05_graphTheoryTraversalAndShortestPaths.test.java;
 
+import l05_graphTheoryTraversalAndShortestPaths.main.java.Main;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,25 +15,22 @@ public class ConnectedComponentsTests {
 
         graph.add(new ArrayList<>(Arrays.asList(3, 6)));
         graph.add(new ArrayList<>(Arrays.asList(3, 4, 5, 6)));
-        graph.add(new ArrayList<>(Arrays.asList(8)));
+        graph.add(new ArrayList<>(Collections.singletonList(8)));
         graph.add(new ArrayList<>(Arrays.asList(0, 1, 5)));
         graph.add(new ArrayList<>(Arrays.asList(1, 6)));
         graph.add(new ArrayList<>(Arrays.asList(1, 3)));
         graph.add(new ArrayList<>(Arrays.asList(0, 1, 4)));
         graph.add(new ArrayList<>());
-        graph.add(new ArrayList<>(Arrays.asList(2)));
+        graph.add(new ArrayList<>(Collections.singletonList(2)));
 
 
         // Act
         List<Deque<Integer>> expected = new ArrayList<>();
-        Deque<Integer> deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(6, 4, 5, 1, 3, 0));
+        Deque<Integer> deque = new ArrayDeque<>(Arrays.asList(6, 4, 5, 1, 3, 0));
         expected.add(deque);
-        deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(8, 2));
+        deque = new ArrayDeque<>(Arrays.asList(8, 2));
         expected.add(deque);
-        deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(7));
+        deque = new ArrayDeque<>(Collections.singletonList(7));
         expected.add(deque);
 
         List<Deque<Integer>> connectedComponents = Main.getConnectedComponents(graph);
@@ -42,10 +40,8 @@ public class ConnectedComponentsTests {
             Deque<Integer> expect = expected.get(i);
             Deque<Integer> result = connectedComponents.get(i);
 
-            Set<Integer> e = new TreeSet<>();
-            Set<Integer> r = new TreeSet<>();
-            e.addAll(expect);
-            r.addAll(result);
+            Set<Integer> e = new TreeSet<>(expect);
+            Set<Integer> r = new TreeSet<>(result);
 
             Assert.assertEquals(e.toString(), r.toString());
         }
@@ -61,8 +57,7 @@ public class ConnectedComponentsTests {
 
         // Act
         List<Deque<Integer>> expected = new ArrayList<>();
-        Deque<Integer> deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(0));
+        Deque<Integer> deque = new ArrayDeque<>(Collections.singletonList(0));
         expected.add(deque);
 
         List<Deque<Integer>> connectedComponents = Main.getConnectedComponents(graph);
@@ -72,10 +67,8 @@ public class ConnectedComponentsTests {
             Deque<Integer> expect = expected.get(i);
             Deque<Integer> result = connectedComponents.get(i);
 
-            Set<Integer> e = new TreeSet<>();
-            Set<Integer> r = new TreeSet<>();
-            e.addAll(expect);
-            r.addAll(result);
+            Set<Integer> e = new TreeSet<>(expect);
+            Set<Integer> r = new TreeSet<>(result);
 
             Assert.assertEquals(e.toString(), r.toString());
         }
@@ -96,10 +89,8 @@ public class ConnectedComponentsTests {
             Deque<Integer> expect = expected.get(i);
             Deque<Integer> result = connectedComponents.get(i);
 
-            Set<Integer> e = new TreeSet<>();
-            Set<Integer> r = new TreeSet<>();
-            e.addAll(expect);
-            r.addAll(result);
+            Set<Integer> e = new TreeSet<>(expect);
+            Set<Integer> r = new TreeSet<>(result);
 
             Assert.assertEquals(e.toString(), r.toString());
         }
@@ -112,26 +103,22 @@ public class ConnectedComponentsTests {
 
         graph.add(new ArrayList<>());
         graph.add(new ArrayList<>(Arrays.asList(2, 6)));
-        graph.add(new ArrayList<>(Arrays.asList(1)));
-        graph.add(new ArrayList<>(Arrays.asList(4)));
-        graph.add(new ArrayList<>(Arrays.asList(3)));
+        graph.add(new ArrayList<>(Collections.singletonList(1)));
+        graph.add(new ArrayList<>(Collections.singletonList(4)));
+        graph.add(new ArrayList<>(Collections.singletonList(3)));
         graph.add(new ArrayList<>());
-        graph.add(new ArrayList<>(Arrays.asList(1)));
+        graph.add(new ArrayList<>(Collections.singletonList(1)));
 
 
         // Act
         List<Deque<Integer>> expected = new ArrayList<>();
-        Deque<Integer> deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(0));
+        Deque<Integer> deque = new ArrayDeque<>(Collections.singletonList(0));
         expected.add(deque);
-        deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(2, 6, 1));
+        deque = new ArrayDeque<>(Arrays.asList(2, 6, 1));
         expected.add(deque);
-        deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(4, 3));
+        deque = new ArrayDeque<>(Arrays.asList(4, 3));
         expected.add(deque);
-        deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(5));
+        deque = new ArrayDeque<>(Collections.singletonList(5));
         expected.add(deque);
 
         List<Deque<Integer>> connectedComponents = Main.getConnectedComponents(graph);
@@ -141,10 +128,8 @@ public class ConnectedComponentsTests {
             Deque<Integer> expect = expected.get(i);
             Deque<Integer> result = connectedComponents.get(i);
 
-            Set<Integer> e = new TreeSet<>();
-            Set<Integer> r = new TreeSet<>();
-            e.addAll(expect);
-            r.addAll(result);
+            Set<Integer> e = new TreeSet<>(expect);
+            Set<Integer> r = new TreeSet<>(result);
 
             Assert.assertEquals(e.toString(), r.toString());
         }
@@ -163,8 +148,7 @@ public class ConnectedComponentsTests {
 
         // Act
         List<Deque<Integer>> expected = new ArrayList<>();
-        Deque<Integer> deque = new ArrayDeque<>();
-        deque.addAll(Arrays.asList(3, 2, 1, 0));
+        Deque<Integer> deque = new ArrayDeque<>(Arrays.asList(3, 2, 1, 0));
         expected.add(deque);
 
         List<Deque<Integer>> connectedComponents = Main.getConnectedComponents(graph);
@@ -174,10 +158,8 @@ public class ConnectedComponentsTests {
             Deque<Integer> expect = expected.get(i);
             Deque<Integer> result = connectedComponents.get(i);
 
-            Set<Integer> e = new TreeSet<>();
-            Set<Integer> r = new TreeSet<>();
-            e.addAll(expect);
-            r.addAll(result);
+            Set<Integer> e = new TreeSet<>(expect);
+            Set<Integer> r = new TreeSet<>(result);
 
             Assert.assertEquals(e.toString(), r.toString());
         }
