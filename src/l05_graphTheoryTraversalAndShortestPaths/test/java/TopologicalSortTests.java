@@ -1,5 +1,6 @@
 package l05_graphTheoryTraversalAndShortestPaths.test.java;
 
+import l05_graphTheoryTraversalAndShortestPaths.main.java.Main;
 import org.junit.Assert;
 import org.junit.Test;
 
