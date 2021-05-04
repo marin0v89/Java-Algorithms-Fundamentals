@@ -57,6 +57,8 @@ public class Main {
     }
 
     public static Collection<String> topSort(Map<String, List<String>> graph) {
-        throw new AssertionError("Not Implemented");
+        List<String> graphComponents = new ArrayList<>();
+
+        return graphComponents;
     }
 }
