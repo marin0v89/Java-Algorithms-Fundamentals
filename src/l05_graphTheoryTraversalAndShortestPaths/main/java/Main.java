@@ -58,12 +58,20 @@ public class Main {
 
     public static Collection<String> topSort(Map<String, List<String>> graph) {
         Map<String, Integer> dependenciesCount = getDependenciesCount(graph);
+        List<String> sorted = new ArrayList<>();
 
+        return sorted;
     }
 
     private static Map<String, Integer> getDependenciesCount(Map<String, List<String>> graph) {
         Map<String, Integer> dependenciesCount = new LinkedHashMap<>();
-
+        for (var node : graph.entrySet()) {
+            dependenciesCount.putIfAbsent(node.getKey(), 0);
+            for (String child : node.getValue()) {
+                dependenciesCount.putIfAbsent(child, 0);
+                dependenciesCount.put(child, dependenciesCount.get(child) + 1);
+            }
+        }
         return dependenciesCount;
     }
 }
