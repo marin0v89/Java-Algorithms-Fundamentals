@@ -60,6 +60,27 @@ public class Main {
         Map<String, Integer> dependenciesCount = getDependenciesCount(graph);
         List<String> sorted = new ArrayList<>();
 
+        while (!graph.isEmpty()) {
+            String current = graph.keySet()
+                    .stream()
+                    .filter(k -> dependenciesCount.get(k) == 0)
+                    .findFirst()
+                    .orElse(null);
+
+            if (current == null) {
+                break;
+            }
+
+            for (String child : graph.get(current)) {
+                dependenciesCount.put(child, dependenciesCount.get(child) - 1);
+            }
+
+            sorted.add(current);
+            graph.remove(current);
+        }
+        if (!graph.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         return sorted;
     }
 
