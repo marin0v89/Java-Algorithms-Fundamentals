@@ -57,8 +57,13 @@ public class Main {
     }
 
     public static Collection<String> topSort(Map<String, List<String>> graph) {
-        List<String> graphComponents = new ArrayList<>();
+        Map<String, Integer> dependenciesCount = getDependenciesCount(graph);
 
-        return graphComponents;
+    }
+
+    private static Map<String, Integer> getDependenciesCount(Map<String, List<String>> graph) {
+        Map<String, Integer> dependenciesCount = new LinkedHashMap<>();
+
+        return dependenciesCount;
     }
 }
