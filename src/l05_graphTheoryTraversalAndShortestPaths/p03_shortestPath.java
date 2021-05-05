@@ -30,8 +30,22 @@ public class p03_shortestPath {
         visited = new boolean[n + 1];
         prevNodes = new int[n + 1];
 
+        Arrays.fill(prevNodes, -1);
+
         bfs(graph, source, destination);
 
+        List<Integer> path = new ArrayList<>();
+        path.add(destination);
+        int currentNode = prevNodes[destination];
+
+        while (currentNode != -1) {
+            path.add(currentNode);
+            currentNode = prevNodes[currentNode];
+        }
+        System.out.println("Shortest path length is: " + (path.size() - 1));
+        for (int i = path.size()-1; i >=0 ; i--) {
+            System.out.print(path.get(i)+" ");
+        }
     }
 
     private static void bfs(List<List<Integer>> graph, int source, int destination) {
